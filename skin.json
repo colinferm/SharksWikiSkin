@@ -1,0 +1,40 @@
+{
+    "name": "Stats For Sharks",
+    "author": "Colin Andrew Ferm",
+    "type": "skin",
+    "ValidSkinNames": {
+        "statsforsharks": "StatsForSharks"
+    },
+    "AutoloadClasses": {
+        "SkinStatsForSharks": "SkinStatsForSharks.php",
+        "StatsForSharksTemplate": "StatsForSharksTemplate.php"
+    },
+    "ResourceModules": {
+        "skins.statsforsharks.styles": {
+            "targets": ["desktop", "mobile"],
+            "position": "top",
+            "styles": {
+                "css/foundation.css": {
+                    "media": "screen"
+                },
+                "css/app.css": {
+                    "media": "screen"
+                }
+            }
+        },
+        "skins.statsforsharks.js": {
+            "scripts": [
+                "js/vendor/foundation.js",
+                "js/vendor/what-input.js",
+                "js/vendor/snap.svg.js",
+                "js/vendor/jquery.parallax-1.1.3.js",
+                "js/app.js"
+            ],
+            "position": "top"
+        }
+    },
+    "ResourceFileModulePaths": {
+        "localBasePath": "",
+        "remoteSkinPath": "StatsForSharks"
+    }
+}
