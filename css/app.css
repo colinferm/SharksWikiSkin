@@ -27,18 +27,21 @@ p {
   background: #074E68;
   background-size: cover;
   position: relative;
-  overflow: visible;
-  padding-top: 2.5rem;
-  padding-bottom: 4.9rem;
-  background-image: url('/skins/StatsForSharks/images/shark-banner.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: 50% -375px;
+  overflow: hidden;
+  max-height: 120px;
 }
 
 .header .headline {
 	color: #FFE;
+}
+
+header > .banner-container {
+	width: 100%;
+}
+
+header > .banner-container > img {
+	width: 100%;
+	height: auto;
 }
 
 .title-bar-left,
@@ -50,6 +53,11 @@ p {
 	line-height: 40px;
 	color: #FFF;
 	text-decoration: none;
+	flex: 1 1 35px;
+}
+
+.title-bar-right {
+	flex: 2 1 0px;
 }
 
 .main-menu-item > a {
@@ -127,7 +135,7 @@ p {
 	color: #FFF;
 }
 
-div.row.main-content-well {
+div.grid-x.main-content-well {
 	background-color: #FFF;
 }
 
@@ -177,6 +185,33 @@ div.row.main-content-well {
 .mw-category-generated #mw-pages {
 	margin-top: 3rem;
 }
+
+.mw-category-generated .mw-category {
+	-webkit-column-count: 1;
+	-moz-column-count: 1;
+	column-count: 1;
+	-webkit-column-width: 24em;
+	-moz-column-width: 24em;
+	column-width: 24em;
+}
+
+.mw-category-generated .mw-category .mw-category-group {
+	margin-bottom: 1rem;
+}
+
+.mw-category-generated .mw-category .mw-category-group ul {
+	/*
+	display: flex;
+	flex-wrap: wrap;
+	*/
+	column-count: 2;
+	column-width: 24rem;
+}
+
+.mw-category-generated .mw-category .mw-category-group li {
+	width: 50%;
+}
+	
 
 #mw-subcategories > p,
 #mw-pages > P {
@@ -519,6 +554,10 @@ div.statschart {
 
 @media only screen and (max-width: 40em) {
 
+	.header {
+		background-position: inherit;
+	}
+
 	h1.page-header {
 		font-size: 2rem;
 		padding-top: 20px;
@@ -558,9 +597,10 @@ div.statschart {
 
  } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
-@media only screen and (max-width: 64em) {
-	.header {
-		background-position: inherit;
+ @media only screen and (max-width: 64em) {
+
+	.title-bar-left, .title-bar-left a {
+		font-size: 1em;
 	}
 }
 
