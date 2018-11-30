@@ -34,6 +34,8 @@ class StatsForSharksTemplate extends BaseTemplate {
 	public function execute() {
 		header('X-XSS-Protection:0');
 		$nav = $this->data['content_navigation'];
+		//print_r($this->getSkin()->getUser());
+		//print_r($this->getUserLinks());
 
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 		$this->html('headelement');
@@ -137,7 +139,10 @@ class StatsForSharksTemplate extends BaseTemplate {
 							echo '<br/><br/>';
 						}
 					} else if (strlen($this->getSkin()->bannerImage)) {
-						echo '<img src="'.$this->getSkin()->bannerImage.'" alt="The Sharks of Shark Tank" class="feat-banner-img">';
+						echo '<img src="'.$this->getSkin()->bannerImage.'" alt="'.$this->getSkin()->sharksInvolved.'" class="feat-banner-img">';
+						echo '<h1 class="page-header">';
+						echo str_replace('Category:', '', $this->data['title']);
+						echo '</h1>';
 					} else {
 						echo '<h1 class="page-header">';
 						echo str_replace('Category:', '', $this->data['title']);
@@ -158,6 +163,9 @@ class StatsForSharksTemplate extends BaseTemplate {
 				<?php foreach($nav['actions'] as $action): ?>
 					<a href="<?php echo $action['href']; ?>" class="<?php echo $action['class']; ?>"><?php echo $action['text']; ?></a>
 				<?php endforeach; ?>
+				<?php if (isset( $this->data['nav_urls']['whatlinkshere'])): ?>
+					<a href="<?php echo $this->data['nav_urls']['whatlinkshere']['href']; ?>" class="">What links here</a>
+				<?php endif; ?>
 				<br/><br/><?php echo $this->data['lastmod']; ?>
 			</div>
 		</div>

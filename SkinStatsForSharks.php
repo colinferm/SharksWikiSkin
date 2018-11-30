@@ -84,14 +84,15 @@ class SkinStatsForSharks extends SkinTemplate {
 			$this->sharksInvolved = "Daymond John";
 		}
 
+		$title = $out->getContext()->getTitle()->mTextform." Summary & Charts";
 		if (strlen($this->bannerImage)) {
 			$out->addMeta('og:image', $this->bannerImage);
-			$out->addMeta('og:title', $out->getContext()->getTitle()->mTextform." - A ".$this->sharksInvolved." Deal");
-		} else {
-			$out->addMeta('og:title', $out->getContext()->getTitle()->mTextform." Summary & Charts");
+			$title = $out->getContext()->getTitle()->mTextform." - A ".$this->sharksInvolved." Deal";
 		}
+		$out->setHTMLTitle($title);
+		$out->addMeta('og:title', $title);
 		$out->addMeta('og:url', $out->getContext()->getTitle()->getCanonicalURL());
-		$out->addMeta('og:title', "Stats For Sharks");
+		$out->addMeta('og:site_name', "Stats For Sharks");
 		$out->addMeta('og:type', "article");
 		//echo $out->getCanonicalUrl();
 
