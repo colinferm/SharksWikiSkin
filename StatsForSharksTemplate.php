@@ -36,6 +36,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 		$nav = $this->data['content_navigation'];
 		//print_r($this->getSkin()->getUser());
 		//print_r($this->getUserLinks());
+		$skin = $this->getSkin();
 
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 		$this->html('headelement');
@@ -138,8 +139,12 @@ class StatsForSharksTemplate extends BaseTemplate {
 						} else {
 							echo '<br/><br/>';
 						}
-					} else if (strlen($this->getSkin()->bannerImage)) {
-						echo '<img src="'.$this->getSkin()->bannerImage.'" alt="'.$this->getSkin()->sharksInvolved.'" class="feat-banner-img">';
+					} else if ($skin->is_deal && strlen($skin->bannerImage)) {
+						if ($skin->no_deal) {
+							echo '<img src="'.$skin->bannerImage.'" alt="'.$skin->sharksInvolved.'" class="feat-banner-img">';
+						} else {
+							echo '<img src="'.$skin->bannerImage.'" alt="No Deal" class="feat-banner-img">';
+						}
 						echo '<h1 class="page-header">';
 						echo str_replace('Category:', '', $this->data['title']);
 						echo '</h1>';

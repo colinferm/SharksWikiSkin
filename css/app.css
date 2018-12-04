@@ -285,6 +285,10 @@ div.sidebar.float-left {
 	margin-top: 5px;
 }
 
+#mw-hidden-catlinks {
+	display: none;
+}
+
 #footer {
 	background-color: #14679E;
 	color: #FFF;
