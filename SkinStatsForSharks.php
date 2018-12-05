@@ -29,7 +29,7 @@ class SkinStatsForSharks extends SkinTemplate {
 		$property_getter = Closure::bind($geter, null, $out);
 		$categories = $property_getter($out);
 
-		//print_r($categories);
+		//print_r($this);
 
 		$this->is_deal = $this->hasCategory($categories['hidden'], 'Deals');
 		$this->no_deal = $this->hasCategory($categories['hidden'], 'No Deal');
@@ -96,13 +96,23 @@ class SkinStatsForSharks extends SkinTemplate {
 			}
 		} else if ($this->is_deal && $this->no_deal) {
 			$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-no-deal.jpg';
+
+		} else if ($out->getContext()->getTitle()->mTextform == "Main Page") {
+			$title = "Welcome to Stats For Sharks";
+			$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-chairs.jpg';
+			$out->addMeta('og:description', "Charts and Graphs Visualizing Every Deal Ever Aired On Shark Tank");
 		}
 
 		if ($this->is_deal && $this->no_deal) {
 			$title = $out->getContext()->getTitle()->mTextform." - Summary & Charts";
+
 		} else if ($this->is_deal && strlen($this->bannerImage)) {
 			$out->addMeta('og:image', $this->bannerImage);
 			$title = $out->getContext()->getTitle()->mTextform." - A ".$this->sharksInvolved." Deal";
+
+		} else if (strlen($this->bannerImage)) {
+			$out->addMeta('og:image', $this->bannerImage);
+
 		} else {
 			$title = $out->getContext()->getTitle()->mTextform." Summary & Charts";
 		}
@@ -115,7 +125,7 @@ class SkinStatsForSharks extends SkinTemplate {
 
 		//print_r($categories['normal']);
 		//echo "Number of categories: ".sizeof($categories['normal']);
-		$out->addModules( 'skins.statsforsharks.js' );
+		$out->addModules('skins.statsforsharks.js');
 	}
 
 	private function hasCategory($categories, $test) {

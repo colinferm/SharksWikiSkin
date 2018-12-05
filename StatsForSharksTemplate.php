@@ -139,6 +139,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 						} else {
 							echo '<br/><br/>';
 						}
+
 					} else if ($skin->is_deal && strlen($skin->bannerImage)) {
 						if ($skin->no_deal) {
 							echo '<img src="'.$skin->bannerImage.'" alt="'.$skin->sharksInvolved.'" class="feat-banner-img">';

@@ -489,7 +489,21 @@ div.statschart {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	position: relative;
 }
+
+.episode-update-container .update > .snipe {
+	position: absolute;
+	transform: rotate(20deg);
+	width: 100px;
+	right: 10px;
+	top: 10px;
+	background-color: #FFF;
+	border-radius: 7px;
+	border: 1px solid #000;
+	padding: 4px;
+}
+
 .episode-update-container .update > a {
 	font-weight: bold;
 	display: block;
