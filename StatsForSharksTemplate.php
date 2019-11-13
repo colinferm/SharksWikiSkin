@@ -48,7 +48,6 @@ class StatsForSharksTemplate extends BaseTemplate {
 			<img src="/skins/StatsForSharks/images/shark-banner3.png">
 		</div>
 	</header>
-	<body>
 	<div data-sticky-container>
 		<div class="title-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%">
 			<div class="title-bar-left"><a href="/">Stats For Sharks</a></div>
@@ -87,6 +86,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 							<li><a href="/entry/Category:Season_Eight">Season Eight</a></li>
 							<li><a href="/entry/Category:Season_Nine">Season Nine</a></li>
 							<li><a href="/entry/Category:Season_Ten">Season Ten</a></li>
+							<li><a href="/entry/Category:Season_Eleven">Season Eleven</a></li>
 						</ul>
 					</li>
 					<li class="main-menu-item hide-for-small-only"><a href="https://blog.statsforsharks.com">Blog</a></li>
@@ -95,6 +95,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 			</div>
 		</div>
 	</div>
+	<div id="fb-root"></div>
 	<?php
 		if (strpos($this->data['title'], 'Category:') === FALSE) {
 			echo '<div class="grid-x">';
@@ -104,48 +105,32 @@ class StatsForSharksTemplate extends BaseTemplate {
 			echo '</div>';
 		}
 	?>
-	<div class="grid-container">
+	<div class="grid-container <?php echo $skin->getSpecialClasses(); ?>">
 		<div class="grid-x grid-padding-x main-content-well">
 			<div class="cell medium-10">
 				<?php
-					if ($this->data['title'] == 'Category:Mark Cuban') {
-						echo '<img src="/skins/StatsForSharks/images/banner-mark-cuban2.jpg" alt="Mark Cuban" class="feat-banner-img">';
-						echo '<h1 class="page-header page-shark">Mark Cuban</h1>';
-						
-					} else if ($this->data['title'] == 'Category:Kevin O\'Leary') {
-						echo '<img src="/skins/StatsForSharks/images/banner-kevin-oleary2.jpg" alt="Kevin O\'Leary" class="feat-banner-img">';
-						echo '<h1 class="page-header page-shark">Kevin O\'Leary</h1>';
-
-					} else if ($this->data['title'] == 'Category:Barbara Corcoran') {
-						echo '<img src="/skins/StatsForSharks/images/banner-barbara-corcoran2.jpg" alt="Barbara Corcoran" class="feat-banner-img">';
-						echo '<h1 class="page-header page-shark">Barbara Corcoran</h1>';
-
-					} else if ($this->data['title'] == 'Category:Daymond John') {
-						echo '<img src="/skins/StatsForSharks/images/banner-daymond-john2.jpg" alt="Daymond John" class="feat-banner-img">';
-						echo '<h1 class="page-header page-shark">Daymond John</h1>';
-
-					} else if ($this->data['title'] == 'Category:Robert Herjavec') {
-						echo '<img src="/skins/StatsForSharks/images/banner-robert-herjavec2.jpg" alt="Robert Herjavec" class="feat-banner-img">';
-						echo '<h1 class="page-header page-shark">Robert Herjavec</h1>';
-
-					} else if ($this->data['title'] == 'Category:Lori Greiner') {
-						echo '<img src="/skins/StatsForSharks/images/banner-lori-grenier2.jpg" alt="Lori Greiner">';
-						echo '<h1 class="page-header page-shark">Lori Greiner</h1>';
-
-					} else if ($this->data['title'] == 'Category:Sharks' || $this->data['title'] == 'Main Page') {
-						echo '<img src="/skins/StatsForSharks/images/banner-sharks.jpg" alt="The Sharks of Shark Tank" class="feat-banner-img">';
-						if ($this->data['title'] == 'Category:Sharks') {
-							echo '<h1 class="page-header page-shark">The Sharks of Shark Tank</h1>';
-						} else {
-							echo '<br/><br/>';
+					if ($skin->is_shark_category) {
+						echo '<div class="feat-banner-container"><img src="'.$skin->bannerImage.'" alt="'.$skin->bannerTitle.'" class="feat-banner-img"></div>';
+						echo '<h1 class="page-header page-shark">'.$skin->bannerTitle.'</h1>';
+					} else if ($skin->is_special_title) {
+						if (strlen($skin->bannerImage)) {
+							echo '<div class="feat-banner-container"><img src="'.$skin->bannerImage.'" alt="'.$skin->bannerTitle.'" class="feat-banner-img"></div>';
 						}
-
+						echo $skin->bannerTitle;
 					} else if ($skin->is_deal && strlen($skin->bannerImage)) {
+						echo '<div class="feat-banner-container">';
 						if ($skin->no_deal) {
 							echo '<img src="'.$skin->bannerImage.'" alt="'.$skin->sharksInvolved.'" class="feat-banner-img">';
 						} else {
 							echo '<img src="'.$skin->bannerImage.'" alt="No Deal" class="feat-banner-img">';
 						}
+						/*
+						echo '<div class="featured-tidbit-container">';
+						echo '<div><div class="tidbit-box"></div><span class="tidbit-text">This is Barbara\'s 17th Service Deal.</span></div>';
+						echo '<div><div class="tidbit-box"></div><span class="tidbit-text">This is Barbara\'s 23rd Time Mentioning Cousins Maine Lobster.</span></div>';
+						echo '</div>';
+						*/
+						echo '</div>';
 						echo '<h1 class="page-header">';
 						echo str_replace('Category:', '', $this->data['title']);
 						echo '</h1>';
@@ -173,6 +158,20 @@ class StatsForSharksTemplate extends BaseTemplate {
 					<a href="<?php echo $this->data['nav_urls']['whatlinkshere']['href']; ?>" class="">What links here</a>
 				<?php endif; ?>
 				<br/><br/><?php echo $this->data['lastmod']; ?>
+				<br/><br/>
+				<?php if ($skin->is_deal) : ?>
+				<div class="fb-share-button" data-href="<?php echo $skin->canonicalURL; ?>" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($skin->canonicalURL); ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+				<br/><br/>
+				<a class="twitter-share-button"
+					href="https://twitter.com/intent/tweet"
+					data-size="large"
+					data-text="<?php echo $this->data['title']; ?> deal in the tank"
+					data-url="<?php echo $skin->canonicalURL; ?>"
+					data-hashtags="sharktank"
+					data-via="statsforsharks">
+					Tweet
+					</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -180,12 +179,13 @@ class StatsForSharksTemplate extends BaseTemplate {
 		<div class="grid-container">
 			<div class="grid-x grid-padding-x">
 				<div class="cell large-4 medium-4">
-					<h3>About</h3>
-					<p>Shark Stats is a project that attempts to follow Shark Tank through the numbers and follow up on the stories of the companies that appear on the show.</p>
+				<h3>Recently Added</h3>
+					<ul id="newestPages">
+					</ul>
 				</div>
 				<div class="cell large-4 medium-4">
-					<h3>Latest</h3>
-					<ul id="newestPages">
+					<h3>Recently Updated</h3>
+					<ul id="updatePages">
 					</ul>
 				</div>
 				<div class="cell large-4 medium-4">
@@ -228,6 +228,27 @@ class StatsForSharksTemplate extends BaseTemplate {
 					container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
 				}
 			});
+			$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=edit&rclimit=5&rcnamespace=0&rcshow=!redirect|!minor&rcdir=older', function(data) {
+				var container = $('#updatePages');
+				container.empty();
+
+				var results = data['query']['recentchanges'];
+				var resultlen = results.length;
+				for (i = 0; i < resultlen; i++) {
+					var result = results[i];
+					var timestamp = result['timestamp'];
+					var title = result["title"];
+					var encodedTitle = title.replace(/ /g,'_');
+					encodedTitle = encodedTitle.replace(/'/g,'%27');
+					var year = timestamp.substring(2,4);
+					var month = timestamp.substring(5,7);
+					var day = timestamp.substring(8,10);
+
+					var formatdate = month + "." + day + "." + year;
+					//alert(result['title']);
+					container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
+				}
+			});
 		});
 	</script>
 	<?php $this->printTrail(); ?>
@@ -250,7 +271,25 @@ class StatsForSharksTemplate extends BaseTemplate {
 			}
 		});
 	</script>
-	</body>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=472792593338098&autoLogAppEvents=1"></script>
+	<script>
+		window.twttr = (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0],
+			t = window.twttr || {};
+		if (d.getElementById(id)) return t;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
+
+		t._e = [];
+		t.ready = function(f) {
+			t._e.push(f);
+		};
+
+		return t;
+		}(document, "script", "twitter-wjs"));
+	</script>
 </html>
 <?php
 	}

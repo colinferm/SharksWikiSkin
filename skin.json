@@ -17,7 +17,7 @@
                 "css/foundation.css": {
                     "media": "screen"
                 },
-                "css/app.css": {
+                "css/app.less": {
                     "media": "screen"
                 }
             }
