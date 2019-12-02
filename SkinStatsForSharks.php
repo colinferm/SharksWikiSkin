@@ -11,6 +11,7 @@ class SkinStatsForSharks extends SkinTemplate {
 	public $is_deal = false;
 	public $is_shark_category = false;
 	public $is_special_title = false;
+	public $is_update = false;
 	public $canonicalURL;
 
 	/**
@@ -48,6 +49,7 @@ class SkinStatsForSharks extends SkinTemplate {
 
 		$this->is_deal = $this->hasCategory($categories['hidden'], 'Deals');
 		$this->no_deal = $this->hasCategory($categories['hidden'], 'No Deal');
+		$this->is_update = $this->hasCategory($categories['hidden'], 'Updates');
 
 		if ($this->is_deal && !$this->no_deal) {
 			$has_mark = $this->hasCategory($categories['normal'], 'Mark Cuban');
@@ -151,68 +153,164 @@ class SkinStatsForSharks extends SkinTemplate {
 			if ($num_guests > 0) $num_sharks += $num_guests;
 
 			if ($has_mark && $has_lori) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-lori.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-lori-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-lori.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Lori Greiner";
+
 			} else if ($has_mark && $has_kevin) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-kevin.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-kevin-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-kevin.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Kevin O'Leary";
+
 			} else if ($has_mark && $has_robert) {
-				$this->bannerImage =  'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-robert.jpg';
+				if ($this->is_update) {
+					$this->bannerImage =  'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-robert-updates.jpg';
+				} else {
+					$this->bannerImage =  'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-robert.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Robert Herjavec";
+
 			} else if ($has_mark && $has_barb) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-barbara.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-barbara-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-barbara.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Barbara Corcoran";
+
 			} else if ($has_mark && $has_daymond) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-daymond.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-daymond-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-daymond.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Daymond John";
+
 			} else if ($has_mark && $has_guest) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-guest-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-guest-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-guest-deal.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban & Guest Shark";
+
 			} else if ($has_lori && $has_robert && $has_kevin) {
 				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-kevin-robert-lori.jpg';
 				$this->sharksInvolved = "Lori Greiner, Kevin O'Leary & Robert Herjavec";
+
 			} else if ($has_lori && $has_robert) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-robert.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-robert-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-robert.jpg';
+				}
 				$this->sharksInvolved = "Lori Greiner & Robert Herjavec";
+
 			} else if ($has_lori && $has_kevin) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-kevin.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-kevin-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-kevin.jpg';
+				}
 				$this->sharksInvolved = "Lori Greiner & Kevin O'Leary";
+
 			} else if ($has_lori && $has_guest) {
 				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-guest-deal.jpg';
 				$this->sharksInvolved = "Lori Greiner & Guest Shark";
+
 			} else if ($has_robert && $has_kevin) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-kevin.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-kevin-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-kevin.jpg';
+				}
 				$this->sharksInvolved = "Robert Herjavec & Kevin O'Leary";
+
 			} else if ($has_robert && $has_daymond) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-daymond.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-daymond-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-daymond.jpg';
+				}
 				$this->sharksInvolved = "Robert Herjavec & Daymond John";
+
 			} else if ($has_robert && $has_barb) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-barbara.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-barbara-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-barbara.jpg';
+				}
 				$this->sharksInvolved = "Robert Herjavec & Barbara Corcoran";
+
 			} else if ($has_lori) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-greiner-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-greiner-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-lori-greiner-deal.jpg';
+				}
 				$this->sharksInvolved = "Lori Greiner";
+
 			} else if ($has_mark) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-cuban-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-cuban-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-mark-cuban-deal.jpg';
+				}
 				$this->sharksInvolved = "Mark Cuban";
+
 			} else if ($has_kevin) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-kevin-oleary-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-kevin-oleary-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-kevin-oleary-deal.jpg';
+				}
 				$this->sharksInvolved = "Kevin O'Leary";
+
 			} else if ($has_robert) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-herjavec-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-herjavec-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-robert-herjavec-deal.jpg';
+				}
 				$this->sharksInvolved = "Robert Herjavec";
+
 			} else if ($has_barb) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-barbara-corcoran-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-barbara-corcoran-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-barbara-corcoran-deal.jpg';
+				}
 				$this->sharksInvolved = "Barbara Corcoran";
+
 			} else if ($has_daymond) {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-daymond-john-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-daymond-john-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-daymond-john-deal.jpg';
+				}
 				$this->sharksInvolved = "Daymond John";
+
 			} else {
-				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/guest-shark-deal.jpg';
+				if ($this->is_update) {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/guest-shark-deal-updates.jpg';
+				} else {
+					$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/guest-shark-deal.jpg';
+				}
 				$this->sharksInvolved = "Guest Shark";
+
 			}
 		} else if ($this->is_deal && $this->no_deal) {
-			$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-no-deal.jpg';
+			if ($this->is_update) {
+				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-no-deal-updates.jpg';
+			} else {
+				$this->bannerImage = 'https://www.statsforsharks.com/skins/StatsForSharks/images/banner-no-deal.jpg';
+			}
 
 		} else if ($titleText == "Main Page") {
 			$title = "Tracking Every Investment Made on Shark Tank";
@@ -327,7 +425,11 @@ class SkinStatsForSharks extends SkinTemplate {
 
 			}
 			$desc = $titleText." entered the Shark Tank and made a deal with ".$shark_text.".";
-			if (strlen($desc) < 245) $desc .= " View our statistics & graphs to see how it holds up.";
+			if (strlen($desc) < 245 && $this->is_update) {
+				$desc .= " This deal features updates from a later episode!";
+			} else if (strlen($desc) < 245) {
+				$desc .= " View our statistics & graphs to see how it holds up.";
+			}
 			$out->addMeta('og:description', $desc);
 		} else if ($this->no_deal) { 
 			$desc = $titleText." entered the Shark Tank looking for a deal but ended up leaving without a shark biting.";
