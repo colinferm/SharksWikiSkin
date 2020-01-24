@@ -206,48 +206,49 @@ class StatsForSharksTemplate extends BaseTemplate {
 	</div>
 	<script type="text/javascript">
 		(window.RLQ=window.RLQ||[]).push(function() {
-			var $ = jQuery;
-			$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=new&rclimit=5&rcnamespace=0&rcshow=!redirect', function(data) {
-				var container = $('#newestPages');
-				container.empty();
+			mw.loader.enqueue(["jquery"], function() {
+				$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=new&rclimit=5&rcnamespace=0&rcshow=!redirect', function(data) {
+					var container = $('#newestPages');
+					container.empty();
 
-				var results = data['query']['recentchanges'];
-				var resultlen = results.length;
-				for (i = 0; i < resultlen; i++) {
-					var result = results[i];
-					var timestamp = result['timestamp'];
-					var title = result["title"];
-					var encodedTitle = title.replace(/ /g,'_');
-					encodedTitle = encodedTitle.replace(/'/g,'%27');
-					var year = timestamp.substring(2,4);
-					var month = timestamp.substring(5,7);
-					var day = timestamp.substring(8,10);
+					var results = data['query']['recentchanges'];
+					var resultlen = results.length;
+					for (i = 0; i < resultlen; i++) {
+						var result = results[i];
+						var timestamp = result['timestamp'];
+						var title = result["title"];
+						var encodedTitle = title.replace(/ /g,'_');
+						encodedTitle = encodedTitle.replace(/'/g,'%27');
+						var year = timestamp.substring(2,4);
+						var month = timestamp.substring(5,7);
+						var day = timestamp.substring(8,10);
 
-					var formatdate = month + "." + day + "." + year;
-					//alert(result['title']);
-					container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
-				}
-			});
-			$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=edit&rclimit=5&rcnamespace=0&rcshow=!redirect|!minor&rcdir=older', function(data) {
-				var container = $('#updatePages');
-				container.empty();
+						var formatdate = month + "." + day + "." + year;
+						//alert(result['title']);
+						container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
+					}
+				});
+				$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=edit&rclimit=5&rcnamespace=0&rcshow=!redirect|!minor&rcdir=older', function(data) {
+					var container = $('#updatePages');
+					container.empty();
 
-				var results = data['query']['recentchanges'];
-				var resultlen = results.length;
-				for (i = 0; i < resultlen; i++) {
-					var result = results[i];
-					var timestamp = result['timestamp'];
-					var title = result["title"];
-					var encodedTitle = title.replace(/ /g,'_');
-					encodedTitle = encodedTitle.replace(/'/g,'%27');
-					var year = timestamp.substring(2,4);
-					var month = timestamp.substring(5,7);
-					var day = timestamp.substring(8,10);
+					var results = data['query']['recentchanges'];
+					var resultlen = results.length;
+					for (i = 0; i < resultlen; i++) {
+						var result = results[i];
+						var timestamp = result['timestamp'];
+						var title = result["title"];
+						var encodedTitle = title.replace(/ /g,'_');
+						encodedTitle = encodedTitle.replace(/'/g,'%27');
+						var year = timestamp.substring(2,4);
+						var month = timestamp.substring(5,7);
+						var day = timestamp.substring(8,10);
 
-					var formatdate = month + "." + day + "." + year;
-					//alert(result['title']);
-					container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
-				}
+						var formatdate = month + "." + day + "." + year;
+						//alert(result['title']);
+						container.append('<li>' + formatdate + ' - <a href="/entry/' + encodedTitle + '">' + title + '</a></li>');
+					}
+				});
 			});
 		});
 	</script>
