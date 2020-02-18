@@ -1,7 +1,12 @@
 {
     "name": "Stats For Sharks",
+    "namemsg": "statsforsharks-name",
+    "descriptionmsg": "statsforsharks-desc",
     "author": "Colin Andrew Ferm",
+    "url": "https://github.com/colinferm/SharksWikiSkin",
     "type": "skin",
+    "license-name": "BSD-3-Clause",
+    "version": "1.1",
     "ValidSkinNames": {
         "statsforsharks": "StatsForSharks"
     },
@@ -36,5 +41,8 @@
     "ResourceFileModulePaths": {
         "localBasePath": "",
         "remoteSkinPath": "StatsForSharks"
-    }
+    },
+    "MessagesDirs": {
+		"StatsForSharks": "i18n"
+	}
 }

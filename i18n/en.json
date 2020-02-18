@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Colin Andrew Ferm"
+		]
+	},
+	"statsforsharks-name": "Stats For Sharks",
+	"statsforsharks-desc": "A Skin for the Stats For Sharks website with some tweaks foor handling Shark and chart specific data."
+}
