@@ -326,7 +326,7 @@ class SkinStatsForSharks extends SkinTemplate {
 
 		if ($titleNS == 14 && $titleText == 'Mark Cuban') {
 			$this->is_shark_category = true;
-			$this->bannerImage = 'https://www.statsforsharks.comskins/StatsForSharks/images/banner-mark-cuban2.jpg';
+			$this->bannerImage = 'https://www.statsforsharks.com/	skins/StatsForSharks/images/banner-mark-cuban2.jpg';
 			$this->bannerTitle = 'Mark Cuban';
 			
 		} else if ($titleNS == 14 && $titleText == 'Kevin O\'Leary') {
