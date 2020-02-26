@@ -288,15 +288,21 @@ body {
 
 		div.social-box {
 			display: flex;
+			flex-wrap: wrap;
 			@media @max64 {
 				flex-direction: column;
 			}
 
 			.content-container {
 				border: none;
+				flex: 1 45%;
+				width: 100%;
 			}
+
 			.widget-container {
 				margin-left: 10px;
+				flex: 1 45%;
+				width: 100%;
 				@media @max64 {
 					margin: 0 auto;
 				}
