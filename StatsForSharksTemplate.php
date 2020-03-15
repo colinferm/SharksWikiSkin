@@ -206,7 +206,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 	</div>
 	<script type="text/javascript">
 		(window.RLQ=window.RLQ||[]).push(function() {
-			mw.loader.enqueue(["jquery"], function() {
+			mw.loader.using(["ext.statsforsharks.statswidget.js"]).done(function() {
 				$.getJSON('/api.php?action=query&format=json&list=recentchanges&rctype=new&rclimit=5&rcnamespace=0&rcshow=!redirect', function(data) {
 					var container = $('#newestPages');
 					container.empty();
