@@ -139,6 +139,10 @@ class SkinStatsForSharks extends SkinTemplate {
 				$has_guest = true;
 				$num_guests++;
 			}
+			if ($this->hasCategory($categories['normal'], 'Katrina Lake')) {
+				$has_guest = true;
+				$num_guests++;
+			}
 
 			$sharks_count = array(
 				'Mark Cuban' => $has_mark,
