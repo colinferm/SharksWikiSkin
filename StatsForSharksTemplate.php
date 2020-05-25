@@ -76,20 +76,20 @@ class StatsForSharksTemplate extends BaseTemplate {
 					<li class="main-menu-item">
 						<a>Deals</a>
 						<ul class="menu">
-							<li><a href="/entry/Category:Season_One">Season One</a></li>
-							<li><a href="/entry/Category:Season_Two">Season Two</a></li>
-							<li><a href="/entry/Category:Season_Three">Season Three</a></li>
-							<li><a href="/entry/Category:Season_Four">Season Four</a></li>
-							<li><a href="/entry/Category:Season_Five">Season Five</a></li>
-							<li><a href="/entry/Category:Season_Six">Season Six</a></li>
-							<li><a href="/entry/Category:Season_Seven">Season Seven</a></li>
-							<li><a href="/entry/Category:Season_Eight">Season Eight</a></li>
-							<li><a href="/entry/Category:Season_Nine">Season Nine</a></li>
-							<li><a href="/entry/Category:Season_Ten">Season Ten</a></li>
+							<li><a href="/entry/Category:Season_Twelve">Season Twelve</a></li>
 							<li><a href="/entry/Category:Season_Eleven">Season Eleven</a></li>
+							<li><a href="/entry/Category:Season_Ten">Season Ten</a></li>
+							<li><a href="/entry/Category:Season_Nine">Season Nine</a></li>
+							<li><a href="/entry/Category:Season_Eight">Season Eight</a></li>
+							<li><a href="/entry/Category:Season_Seven">Season Seven</a></li>
+							<li><a href="/entry/Category:Season_Six">Season Six</a></li>
+							<li><a href="/entry/Category:Season_Five">Season Five</a></li>
+							<li><a href="/entry/Category:Season_Four">Season Four</a></li>
+							<li><a href="/entry/Category:Season_Three">Season Three</a></li>
+							<li><a href="/entry/Category:Season_Two">Season Two</a></li>
+							<li><a href="/entry/Category:Season_One">Season One</a></li>
 						</ul>
 					</li>
-					<li class="main-menu-item hide-for-small-only"><a href="https://blog.statsforsharks.com">Blog</a></li>
 					<li class="main-menu-item hide-for-small-only"><a href="/entry/About_Stats_For_Sharks">About</a></li>
 				</ul>
 			</div>
@@ -198,7 +198,6 @@ class StatsForSharksTemplate extends BaseTemplate {
 						<?php endforeach; ?>
 						<?php $specials = $this->getToolbox(); ?>
 						<li><a href="<?php echo $specials['specialpages']['href']; ?>">Admin</a></li>
-						<li><a href="https://blog.statsforsharks.com">Blog</a></li>
 					</ul>
 				</div>
 			</div>
