@@ -66,10 +66,10 @@ class StatsForSharksTemplate extends BaseTemplate {
 	</style>
 
 	<header class="header">
-		<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Hind+Madurai:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Hind+Madurai:300&display=swap" rel="stylesheet">
 		<!-- <h1 class="headline"></h1> -->
 		<div class="banner-container">
-			<img src="/skins/StatsForSharks/images/shark-banner3.png">
+			<img src="/skins/StatsForSharks/images/shark-banner3.png" alt="Stats For Sharks - Banner Representing Abstract Chart">
 		</div>
 	</header>
 	<div data-sticky-container>
@@ -184,7 +184,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 				<br/><br/><?php echo $this->data['lastmod']; ?>
 				<br/><br/>
 				<?php if ($skin->is_deal) : ?>
-				<div class="fb-share-button" data-href="<?php echo $skin->canonicalURL; ?>" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($skin->canonicalURL); ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+				<div class="fb-share-button" data-href="<?php echo $skin->canonicalURL; ?>" data-layout="button_count" data-size="large"><a target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($skin->canonicalURL); ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 				<br/><br/>
 				<a class="twitter-share-button"
 					href="https://twitter.com/intent/tweet"
