@@ -52,8 +52,16 @@ class StatsForSharksTemplate extends BaseTemplate {
 		ul.dropdown.menu.float-right {
 			float: right;
 		}
+		ul.dropdown.menu.float-right {
+			height: 36px;
+			width: 258px;
+			overflow: hidden;
+		}
 		ul.menu.submenu.is-dropdown-submenu.first-sub.vertical {
 			display: none;
+		}
+		ul.menu.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active {
+			display: block;
 		}
 	</style>
 
