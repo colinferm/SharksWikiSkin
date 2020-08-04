@@ -41,6 +41,22 @@ class StatsForSharksTemplate extends BaseTemplate {
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 		$this->html('headelement');
 		?>
+	<style>
+		div.title-bar {
+			max-height: 56px;
+		}
+		div.title-bar-left {
+			line-height: 40px;
+		}
+		ul.menu.float-right,
+		ul.dropdown.menu.float-right {
+			float: right;
+		}
+		ul.menu.submenu.is-dropdown-submenu.first-sub.vertical {
+			display: none;
+		}
+	</style>
+
 	<header class="header">
 		<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Hind+Madurai:300" rel="stylesheet">
 		<!-- <h1 class="headline"></h1> -->
