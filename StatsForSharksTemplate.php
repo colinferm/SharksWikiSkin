@@ -331,7 +331,16 @@ class StatsForSharksTemplate extends BaseTemplate {
 	(window.RLQ=window.RLQ||[]).push(function() {
 		var disqus_config = function () {
 			this.page.url = "<?php echo $skin->canonicalURL; ?>";  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.title = mw.config.get('wgPageName');
 			this.page.identifier = mw.config.get('wgArticleId'); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			this.callbacks.onNewComment = [function() { 
+				if (gtag) {
+                    gtag('event', 'comment', {
+                        'event_category': 'new',
+                        'event_label': mw.config.get('wgPageName')
+                    });
+            	}
+			}];
 		};
 		(function() { // DON'T EDIT BELOW THIS LINE
 		var d = document, s = d.createElement('script');
