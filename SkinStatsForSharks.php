@@ -443,9 +443,11 @@ class SkinStatsForSharks extends SkinTemplate {
 				$desc .= " View our statistics & graphs to see how it holds up.";
 			}
 			$out->addMeta('og:description', $desc);
+			$out->addMeta('description', $desc);
 		} else if ($this->no_deal) { 
 			$desc = $titleText." entered the Shark Tank looking for a deal but ended up leaving without a shark biting.";
 			$out->addMeta('og:description', $desc);
+			$out->addMeta('description', $desc);
 		}
 		//echo $out->getCanonicalUrl();
 

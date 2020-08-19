@@ -324,6 +324,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 		return t;
 		}(document, "script", "twitter-wjs"));
 	</script>
+	<?php if ($skin->is_deal) : ?>
 	<script>
 	/**
 	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -351,7 +352,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 	});
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-				
+	<?php endif; ?>		
 </html>
 <?php
 	}
