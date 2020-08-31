@@ -337,11 +337,9 @@ class StatsForSharksTemplate extends BaseTemplate {
 			this.page.identifier = mw.config.get('wgArticleId'); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			this.callbacks.onNewComment = [function() { 
 				if (gtag) {
-					gtag('send', 'event', {
-						eventCategory: 'comments',
-						eventAction: 'new_comment',
-						eventLabel: mw.config.get('wgPageName')
-
+					gtag('event', 'new_comment', {
+						'event_category': 'comments',
+						'event_label': mw.config.get('wgPageName')
 					});
             	}
 			}];
