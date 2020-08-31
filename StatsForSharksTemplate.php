@@ -22,7 +22,7 @@
  */
 
 /**
- * QuickTemplate class for Vector skin
+ * QuickTemplate class for Stats For Sharks skin
  * @ingroup Skins
  */
 class StatsForSharksTemplate extends BaseTemplate {
@@ -41,6 +41,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 		$this->html('headelement');
 		?>
+	<link rel="dns-prefetch" href="https://www.google-analytics.com">
 	<style>
 		div.title-bar {
 			max-height: 56px;
@@ -336,10 +337,12 @@ class StatsForSharksTemplate extends BaseTemplate {
 			this.page.identifier = mw.config.get('wgArticleId'); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			this.callbacks.onNewComment = [function() { 
 				if (gtag) {
-                    gtag('event', 'comment', {
-                        'event_category': 'new',
-                        'event_label': mw.config.get('wgPageName')
-                    });
+					gtag('send', 'event', {
+						eventCategory: 'comments',
+						eventAction: 'new_comment',
+						eventLabel: mw.config.get('wgPageName')
+
+					});
             	}
 			}];
 		};
