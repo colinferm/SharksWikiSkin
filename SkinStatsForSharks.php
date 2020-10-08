@@ -12,6 +12,7 @@ class SkinStatsForSharks extends SkinTemplate {
 	public $is_shark_category = false;
 	public $is_special_title = false;
 	public $is_update = false;
+	public $is_episode = false;
 	public $canonicalURL;
 
 	/**
@@ -50,6 +51,7 @@ class SkinStatsForSharks extends SkinTemplate {
 		$this->is_deal = $this->hasCategory($categories['hidden'], 'Deals');
 		$this->no_deal = $this->hasCategory($categories['hidden'], 'No Deal');
 		$this->is_update = $this->hasCategory($categories['hidden'], 'Updates');
+		$this->is_episode = $this->hasCategory($categories['hidden'], 'Episodes');
 
 		if ($this->is_deal && !$this->no_deal) {
 			$has_mark = $this->hasCategory($categories['normal'], 'Mark Cuban');
