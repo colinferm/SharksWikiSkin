@@ -239,7 +239,7 @@ class StatsForSharksTemplate extends BaseTemplate {
 								<?php if ($key == 'userpage' || $key == 'mytalk' || $key == 'mycontris') continue; ?>
 								<li><a href="<?php echo $tool['href']; ?>" class="<?php echo $key; ?>"><?php echo $tool['text']; ?></a></li>
 							<?php endforeach; ?>
-							<?php $specials = $this->getToolbox(); ?>
+							<?php $specials = $this->get('sidebar')['TOOLBOX']; ?>
 							<li><a href="<?php echo $specials['specialpages']['href']; ?>">Admin</a></li>
 						</ul>
 					</div>

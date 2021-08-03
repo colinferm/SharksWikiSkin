@@ -24,6 +24,7 @@ class SkinStatsForSharks extends SkinTemplate {
 		$this->canonicalURL = $out->getContext()->getTitle()->getCanonicalURL();
 
 		$out->addMeta('viewport', 'width=device-width, initial-scale=1');
+		$this->setupStatsForSharksCSS( $out );
 
 		//print_r($out);
 
@@ -484,9 +485,7 @@ class SkinStatsForSharks extends SkinTemplate {
 	 * Loads skin and user CSS files.
 	 * @param OutputPage $out
 	 */
-	function setupSkinUserCss(OutputPage $out) {
-		parent::setupSkinUserCss($out);
-
+	function setupStatsForSharksCSS(OutputPage $out) {
 		$styles = ['mediawiki.skinning.interface', 'skins.statsforsharks.styles'];
 		$out->addModuleStyles($styles);
 	}
